@@ -18,10 +18,12 @@ class HomeControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting
     "render the index page from a new instance of controller" in {
       val controller = new HomeController(stubControllerComponents())
       val home = controller.index().apply(FakeRequest(GET, "/"))
+      val welcome = "Welcome to Play";
+      val th = "text/html"
 
       status(home) mustBe OK
-      contentType(home) mustBe Some("text/html")
-      contentAsString(home) must include ("Welcome to Play")
+      contentType(home) mustBe Some(th)
+      contentAsString(home) must include (welcome)
     }
 
     "render the index page from the application" in {
@@ -29,8 +31,8 @@ class HomeControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting
       val home = controller.index().apply(FakeRequest(GET, "/"))
 
       status(home) mustBe OK
-      contentType(home) mustBe Some("text/html")
-      contentAsString(home) must include ("Welcome to Play")
+      contentType(home) mustBe Some(th)
+      contentAsString(home) must include (welcome)
     }
 
     "render the index page from the router" in {
@@ -38,8 +40,8 @@ class HomeControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting
       val home = route(app, request).get
 
       status(home) mustBe OK
-      contentType(home) mustBe Some("text/html")
-      contentAsString(home) must include ("Welcome to Play")
+      contentType(home) mustBe Some(th)
+      contentAsString(home) must include (welcome)
     }
   }
 }
