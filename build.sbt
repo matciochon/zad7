@@ -10,5 +10,3 @@ scalaVersion := "2.13.13"
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.0" % Test
 
-addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.3")
-
